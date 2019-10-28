@@ -23,7 +23,19 @@ func TestNew(t *testing.T) {
   }
 }
 
+// formatter_test.go
 
+func TestFormatter_ToMajorUnits(t *testing.T) {
+  
+  for _, tc := range tcs {
+    formatter := NewFormatter(tc.fraction, tc.decimal, tc.thousand, tc.grapheme, tc.template)
+    r := formatter.ToMajorUnits(tc.amount)
+    
+    if r != tc.expected {
+      t.Errorf("Expected %d formatted to major units to be %f got %f", tc.amount, tc.expected, r)
+    }
+  }
+}
 
 ```
 
